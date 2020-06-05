@@ -1,9 +1,12 @@
 import axios from "axios";
 
+import CustomError from "../_error";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
-import Header from "../../components/Header/Header";
 
-const CountrySchedule = ({ shows, country }) => {
+const CountrySchedule = ({ shows = [], country = "us", statusCode }) => {
+  if (statusCode) {
+    return <CustomError statusCode={statusCode} />;
+  }
   const renderShows = () => {
     return shows.map((showItem, index) => {
       const { show } = showItem;
@@ -37,11 +40,17 @@ const CountrySchedule = ({ shows, country }) => {
 
 CountrySchedule.getInitialProps = async (context) => {
   const { country } = context.query || "us";
-  const { data } = await axios.get(
-    `https://api.tvmaze.com/schedule?country=${country}&date=2014-12-01`
-  );
 
-  return { shows: data, country };
+  try {
+    const { data } = await axios.get(
+      `https://api.tvmaze.com/schedule?country=${country}&date=2014-12-01`
+    );
+    return { shows: data, country };
+  } catch (err) {
+    return {
+      statusCode: err.response ? err.response.status : 500,
+    };
+  }
 };
 
 export default CountrySchedule;
