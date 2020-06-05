@@ -2,8 +2,6 @@ import axios from "axios";
 
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
 
-import TvShowsStyles from "./styles";
-
 const CountrySchedule = ({ shows, country }) => {
   const renderShows = () => {
     return shows.map((showItem, index) => {
@@ -23,7 +21,16 @@ const CountrySchedule = ({ shows, country }) => {
   return (
     <ul className="tvshows-grid">
       {renderShows()}
-      <style jsx>{TvShowsStyles}</style>
+      <style jsx>{`
+        .tvshows-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          padding: 0;
+          margin: 0;
+          list-style-type: none;
+        }
+      `}</style>
     </ul>
   );
 };
