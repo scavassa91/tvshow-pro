@@ -1,4 +1,5 @@
 import axios from "axios";
+import cookies from "nookies";
 
 import CustomError from "../_error";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
@@ -39,7 +40,8 @@ const CountrySchedule = ({ shows = [], country = "us", statusCode }) => {
 };
 
 CountrySchedule.getInitialProps = async (context) => {
-  const { country } = context.query || "us";
+  const { defaultCountry } = cookies.get(context);
+  const country = context.query.country || defaultCountry || "us";
 
   try {
     const { data } = await axios.get(
