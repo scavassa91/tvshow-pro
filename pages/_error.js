@@ -1,9 +1,11 @@
-import ErrorPage from "next/error";
+import Error from "next/error";
 
-const Error = ({ statusCode }) => <ErrorPage statusCode={statusCode} />;
+const CustomError = ({ statusCode }) => <ErrorPage statusCode={statusCode} />;
 
-Error.getInitialProps = async (context) => {
-  return { statusCode: context.res.statusCode };
+CustomError.getInitialProps = async ({ err, res }) => {
+  return {
+    statusCode: res ? res.statusCode : err ? err.statusCode : 404,
+  };
 };
 
 export default Error;
