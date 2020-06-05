@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import cookies from "nookies";
 
 const countries = [
   {
@@ -24,6 +25,13 @@ const Header = () => {
     setSelectedCountry(e.target.value);
     router.push("/[country]", `/${e.target.value}`);
   };
+
+  useEffect(() => {
+    cookies.set(null, "defaultCountry", selectedCountry, {
+      maxAge: 30 * 24 * 60 * 60,
+      path: "/",
+    });
+  }, [selectedCountry]);
 
   const renderCountries = () => {
     return countries.map((country) => {
