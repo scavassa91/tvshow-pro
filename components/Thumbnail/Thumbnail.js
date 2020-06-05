@@ -7,13 +7,14 @@ const Thumbnail = ({
   caption,
   href = "",
   as = "",
+  small = false,
 }) => {
   return (
-    <div className="thumbnail">
+    <div className={small ? "thumbnail thumbnail-small" : "thumbnail"}>
       <Link href={href} as={as}>
         <a>
           <img className="thumbnail__image" src={imageUrl} />
-          <h4 className="thumbnail__caption">{caption}</h4>
+          <h4 className={"thumbnail__caption"}>{caption}</h4>
         </a>
       </Link>
 

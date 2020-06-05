@@ -1,6 +1,9 @@
 import css from "styled-jsx/css";
 
 const ThumbnailStyles = css`
+  .thumbnail-small {
+    width: 100px;
+  }
   .thumbnail__image {
     width: 100%;
   }

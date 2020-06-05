@@ -1,6 +1,7 @@
 import axios from "axios";
 import parse from "html-react-parser";
 
+import Header from "../../components/Header/Header";
 import Cast from "../../components/Cast/Cast";
 
 const ShowDetails = ({ show }) => {
@@ -11,7 +12,7 @@ const ShowDetails = ({ show }) => {
       <h1>{name}</h1>
       {parse(summary)}
 
-      <Cast cast={_embedded.cast} />
+      {_embedded.cast.length > 0 && <Cast cast={_embedded.cast} />}
 
       <style jsx>{`
         .show-details__poster {

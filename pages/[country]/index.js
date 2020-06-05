@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
+import Header from "../../components/Header/Header";
 
 const CountrySchedule = ({ shows, country }) => {
   const renderShows = () => {
@@ -19,19 +20,18 @@ const CountrySchedule = ({ shows, country }) => {
     });
   };
   return (
-    <ul className="tvshows-grid">
-      {renderShows()}
-      <style jsx>{`
-        .tvshows-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px;
-          padding: 0;
-          margin: 0;
-          list-style-type: none;
-        }
-      `}</style>
-    </ul>
+    <div className="home">
+      <ul className="tvshows-grid">
+        {renderShows()}
+        <style jsx>{`
+          .tvshows-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+          }
+        `}</style>
+      </ul>
+    </div>
   );
 };
 

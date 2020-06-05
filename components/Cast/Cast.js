@@ -5,10 +5,11 @@ const Cast = ({ cast }) => {
     return cast.map((castItem, index) => {
       const { name, image } = castItem.person;
       return (
-        <li key={index}>
+        <li className="cast__list__item" key={index}>
           <Thumbnail
             imageUrl={(image && image.medium) || undefined}
             caption={name}
+            small
           />
         </li>
       );
@@ -22,9 +23,11 @@ const Cast = ({ cast }) => {
 
       <style jsx>{`
         .cast__list {
-          padding: 0;
-          margin: 0;
-          list-style-type: none;
+          display: flex;
+          overflow-x: auto;
+        }
+        .cast__list > :global(li) {
+          margin-right: 10px;
         }
       `}</style>
     </div>
