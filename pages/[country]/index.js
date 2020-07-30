@@ -3,6 +3,7 @@ import cookies from "nookies";
 
 import CustomError from "../_error";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
+import { withAuthorization } from "../../utils/withAuthorization";
 
 const CountrySchedule = ({ shows = [], country = "us", statusCode }) => {
   if (statusCode) {
