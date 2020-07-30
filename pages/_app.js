@@ -11,6 +11,9 @@ const MyApp = ({ Component, pageProps }) => {
           font-family: "raleway";
           src: url("/fonts/raleway/Raleway-Regular.ttf") format("truetype");
         }
+        :global(*) {
+          box-sizing: border-box;
+        }
         :global(html, body) {
           font-family: "raleway";
           margin: 0;
@@ -20,6 +23,30 @@ const MyApp = ({ Component, pageProps }) => {
           margin: 0;
           padding: 0;
           list-style-type: none;
+        }
+        :global(form) {
+          display: flex;
+          width: 100%;
+          padding: 0 10px;
+          flex-direction: column;
+          text-align: center;
+        }
+        :global(input) {
+          margin-bottom: 10px;
+          padding: 10px;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        :global(button) {
+          padding: 10px;
+          margin-bottom: 10px;
+          cursor: pointer;
+          background-color: blue;
+          color: #fff;
+        }
+        :global(.error) {
+          color: red;
+          padding-bottom: 10px;
         }
       `}</style>
     </>

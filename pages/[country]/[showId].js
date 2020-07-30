@@ -1,6 +1,7 @@
 import axios from "axios";
 import parse from "html-react-parser";
 import CustomError from "../_error";
+import { withAuthorization } from "../../utils/withAuthorization";
 
 import Cast from "../../components/Cast/Cast";
 
@@ -60,4 +61,4 @@ ShowDetails.getInitialProps = async ({ query }) => {
   }
 };
 
-export default ShowDetails;
+export default withAuthorization(ShowDetails);
